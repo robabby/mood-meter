@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
+/*
+ * Mood Meter Design System
+ * Calm, breathing, unhurried
+ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dynamic mood color - set via JavaScript */
+  --mood-hue: 160;
+  --mood-saturation: 50%;
+  --mood-lightness: 50%;
+  --mood-color: hsl(var(--mood-hue), var(--mood-saturation), var(--mood-lightness));
+
+  /* Energy position (0-100) for spectrum mapping */
+  --energy-position: 50;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* === Base Palette === */
+  /* Warm neutrals that don't compete with mood colors */
+  --color-canvas: #FDFBF7;
+  --color-canvas-subtle: #F7F4EE;
+  --color-canvas-muted: #EBE6DC;
+  --color-canvas-inverse: #1C1917;
+
+  /* Text colors - warm blacks and grays */
+  --color-ink: #292524;
+  --color-ink-secondary: #78716C;
+  --color-ink-tertiary: #A8A29E;
+  --color-ink-inverse: #FAFAF9;
+
+  /* === Energy Spectrum Colors === */
+  /* Depleted zone (deep, quiet) */
+  --color-spectrum-depleted-1: #1e3a5f;
+  --color-spectrum-depleted-2: #2d4a6f;
+  --color-spectrum-depleted-3: #3d5a7f;
+  --color-spectrum-depleted-4: #4a6a8f;
+  --color-spectrum-depleted-5: #5a7a9f;
+
+  /* Low zone (transitional cool) */
+  --color-spectrum-low-1: #4a7c8a;
+  --color-spectrum-low-2: #5a8c9a;
+  --color-spectrum-low-3: #6a9caa;
+  --color-spectrum-low-4: #7aacba;
+  --color-spectrum-low-5: #8abcca;
+
+  /* Balanced zone (grounded, natural) */
+  --color-spectrum-balanced-1: #7ab38a;
+  --color-spectrum-balanced-2: #8ac39a;
+  --color-spectrum-balanced-3: #9ad3aa;
+  --color-spectrum-balanced-4: #aae3ba;
+  --color-spectrum-balanced-5: #baf3ca;
+
+  /* Elevated zone (warm, bright) */
+  --color-spectrum-elevated-1: #e8c547;
+  --color-spectrum-elevated-2: #f0d057;
+  --color-spectrum-elevated-3: #f5d867;
+  --color-spectrum-elevated-4: #f8e077;
+  --color-spectrum-elevated-5: #fbe887;
+
+  /* High zone (intense, vibrant) */
+  --color-spectrum-high-1: #e89447;
+  --color-spectrum-high-2: #f0a057;
+  --color-spectrum-high-3: #f5a867;
+  --color-spectrum-high-4: #e87c6a;
+  --color-spectrum-high-5: #db6b7a;
+
+  /* === Typography === */
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), Georgia, serif;
+
+  /* Slightly larger for readability during emotional moments */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.25rem;
+
+  /* === Spacing === */
+  --spacing-safe-bottom: env(safe-area-inset-bottom);
+  --spacing-safe-top: env(safe-area-inset-top);
+
+  /* === Border Radius === */
+  /* Soft, not sharp */
+  --radius-soft: 0.625rem;
+  --radius-softer: 1rem;
+  --radius-pill: 9999px;
+
+  /* === Shadows === */
+  /* Subtle, diffuse */
+  --shadow-soft: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 16px -4px rgba(0, 0, 0, 0.12);
+  --shadow-lifted: 0 8px 32px -8px rgba(0, 0, 0, 0.16);
+
+  /* === Animation === */
+  /* Unhurried */
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 600ms;
+  --duration-slower: 800ms;
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.45, 0, 0.15, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* === Base Styles === */
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Safe Area Handling for PWA === */
+.safe-area-top {
+  padding-top: var(--spacing-safe-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: var(--spacing-safe-bottom);
+}
+
+/* === Reduced Motion === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* === Focus Styles === */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* === Selection === */
+::selection {
+  background: var(--color-spectrum-balanced-3);
+  color: var(--color-ink);
 }
