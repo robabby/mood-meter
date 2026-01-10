@@ -97,19 +97,69 @@ pnpm lint         # ESLint
 ## External Services
 
 - **Supabase**: Database + Auth (project already created)
-- **Linear**: Project management (project already created)
+- **Linear**: Project management (see below)
 - **Claude API**: Sentiment analysis (key in .env.local)
+
+## Linear Project Management
+
+**Workspace**: Sherpa
+**Project**: [Mood Meter](https://linear.app/sherpagg/project/mood-meter-e5c816bf3894)
+**Team**: Sherpa
+
+All work items are tracked in Linear. See `PLAN.md` for the current sprint and ticket order.
+
+## Development Workflow
+
+**Every code change requires a Linear ticket.** This ensures traceability and clean git history.
+
+### Workflow Steps
+
+1. **Pick a ticket** from Linear (or create one if needed)
+2. **Move ticket to In Progress** in Linear
+3. **Checkout the ticket's branch**:
+   ```bash
+   git checkout -b sg-XXX-ticket-name
+   ```
+   (Linear auto-generates branch names like `sg-177-moodorb-component`)
+4. **Make changes** on the feature branch
+5. **Push and create PR**:
+   ```bash
+   git push -u origin sg-XXX-ticket-name
+   gh pr create
+   ```
+6. **Review and merge** the PR to main
+7. **Update local main**:
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+8. **Move ticket to Done** in Linear
+9. **Repeat** with the next ticket
+
+### Branch Naming
+
+Always use Linear's suggested branch name format: `sg-XXX-short-description`
+
+### Commit Messages
+
+Reference the ticket in commits when relevant:
+```
+feat(mood): add breathing animation to MoodOrb
+
+Implements the 4s subtle scale cycle with Framer Motion.
+Respects prefers-reduced-motion.
+
+SG-177
+```
 
 ## Documentation
 
-Full design doc and architecture in Obsidian vault:
-`Projects/Active/Mood Meter/`
+- **PLAN.md** — Current sprint, ticket order, and rationale
+- **Obsidian vault** — Full design doc and architecture at `Projects/Active/Mood Meter/`
 
 ## What's Next
 
-1. MoodOrb component (breathing animation, glow effect)
-2. MoodSpectrum component (energy slider)
-3. EntryComposer component (text + voice input)
-4. AI prompt for sentiment → color mapping
-5. /api/analyze route implementation
-6. Supabase entries table schema
+See `PLAN.md` for the prioritized backlog. Current focus:
+1. Supabase schema (SG-182)
+2. AI prompt design (SG-180)
+3. MoodOrb component (SG-177)
