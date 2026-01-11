@@ -74,11 +74,13 @@ export async function POST(
 
   if (dbError) {
     console.error("Database error:", dbError);
-    return createErrorResponse(
-      "UNKNOWN",
-      "Failed to save entry. Try again?",
-      500
-    );
+    console.error("Insert data:", insert);
+    console.error("User ID:", user.id);
+    // In development, show actual error
+    const message = process.env.NODE_ENV === "development"
+      ? `Database error: ${dbError.message}`
+      : "Failed to save entry. Try again?";
+    return createErrorResponse("UNKNOWN", message, 500);
   }
 
   // 5. Return saved entry
