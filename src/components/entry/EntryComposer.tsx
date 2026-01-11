@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useJournalStore, useFinalColor } from "@/stores/useJournalStore";
 import { MoodOrb } from "@/components/mood/MoodOrb";
@@ -50,10 +50,13 @@ export function EntryComposer({
 
   const finalColor = useFinalColor();
 
-  // Initialize with initialText if provided
-  if (initialText && !text) {
-    setText(initialText);
-  }
+  // Initialize with initialText if provided (on mount or when initialText changes)
+  useEffect(() => {
+    if (initialText && !text) {
+      setText(initialText);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentionally omit text/setText to only run on initialText change
+  }, [initialText]);
 
   const handleSubmit = useCallback(async () => {
     if (!text.trim()) return;
