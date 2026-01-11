@@ -69,6 +69,7 @@
   /* === Typography === */
   --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
   --font-serif: var(--font-source-serif), Georgia, serif;
+  --font-journal: var(--font-lora), Georgia, serif;
 
   /* Slightly larger for readability during emotional moments */
   --text-xs: 0.8125rem;
