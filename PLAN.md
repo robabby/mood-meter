@@ -13,7 +13,7 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 | 3 | [SG-178](https://linear.app/sherpagg/issue/SG-178) | MoodSpectrum Component | `sg-178-moodspectrum-component` | Done |
 | 4 | [SG-181](https://linear.app/sherpagg/issue/SG-181) | API Route: /api/analyze | `sg-181-api-route-apianalyze` | Done |
 | 5 | [SG-179](https://linear.app/sherpagg/issue/SG-179) | EntryComposer Component | `sg-179-entrycomposer-component` | Done |
-| 6 | [SG-190](https://linear.app/sherpagg/issue/SG-190) | Wire up full entry save flow | `sg-190-wire-up-full-entry-save-flow` | In Progress |
+| 6 | [SG-190](https://linear.app/sherpagg/issue/SG-190) | Wire up full entry save flow | `sg-190-wire-up-full-entry-save-flow` | Done |
 
 ## Completed This Sprint
 
@@ -22,7 +22,7 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 - **MoodSpectrum** energy slider for adjusting colors
 - **/api/analyze** Claude API integration for sentiment analysis
 - **EntryComposer** text input → analysis → visualization flow
-- **/api/entries** save entries to database (PR #6 pending)
+- **/api/entries** save entries to database
 
 ## Backlog
 
