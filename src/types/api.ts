@@ -3,15 +3,12 @@
  */
 
 import { z } from "zod";
+import type { HSLColor, EnergyLevel } from "./mood";
 
-/** Schema for validating Claude API response */
+/** Schema for validating Claude API response (via tool_use) */
 export const moodAnalysisSchema = z.object({
   energy: z.number().min(0).max(1),
-  hue: z.number().min(0).max(360),
-  saturation: z.number().min(20).max(80),
-  lightness: z.number().min(35).max(65),
   reasoning: z.string().max(200),
-  keywords: z.array(z.string()).optional(),
 });
 
 export type MoodAnalysisResponse = z.infer<typeof moodAnalysisSchema>;
@@ -48,8 +45,13 @@ export interface AnalyzeRequest {
   text: string;
 }
 
-export interface AnalyzeResponse extends MoodAnalysisResponse {
-  alternatives: string[]; // 5 nearby HSL color strings
+/** Full response from /api/analyze (after we compute color from energy) */
+export interface AnalyzeResponse {
+  energy: number;
+  reasoning: string;
+  color: HSLColor;
+  level: EnergyLevel;
+  alternatives: HSLColor[];
 }
 
 export interface CreateEntryRequest {
