@@ -80,6 +80,7 @@ export function EntryTextarea({
       onChange={(e) => onChange(e.target.value)}
       disabled={disabled}
       placeholder={placeholder}
+      aria-label="Journal entry"
       className={`
         w-full resize-none
         bg-canvas-subtle

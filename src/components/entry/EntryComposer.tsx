@@ -29,7 +29,8 @@ const EASE_SOFT = [0.16, 1, 0.3, 1] as const;
 
 export function EntryComposer({
   initialText = "",
-  onComplete,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onComplete, // TODO: Call when user finalizes entry (save button)
   className = "",
 }: EntryComposerProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -46,7 +47,6 @@ export function EntryComposer({
   const setEnergy = useJournalStore((s) => s.setEnergy);
   const error = useJournalStore((s) => s.error);
   const setError = useJournalStore((s) => s.setError);
-  const reset = useJournalStore((s) => s.reset);
 
   const finalColor = useFinalColor();
 
@@ -137,7 +137,7 @@ export function EntryComposer({
             exit={{
               opacity: 0,
               scale: 0.95,
-              height: 60,
+              height: 80,
             }}
             transition={{
               duration: animationDuration,

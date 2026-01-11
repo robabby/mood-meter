@@ -10,8 +10,8 @@ interface SubmitOrbProps {
   className?: string;
 }
 
-// Easing curve from design tokens (--ease-in-out-soft)
-const EASE_SOFT = [0.45, 0, 0.15, 1] as const;
+// Easing curve from design tokens (--ease-out-soft)
+const EASE_SOFT = [0.16, 1, 0.3, 1] as const;
 
 // Balanced green (midpoint of spectrum)
 const HOVER_COLOR = energyToColor(0.5);

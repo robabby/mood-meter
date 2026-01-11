@@ -37,7 +37,7 @@ export function CollapsedEntry({
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: shouldReduceMotion ? 0 : 0.4,
-        delay: shouldReduceMotion ? 0 : 0.3,
+        delay: shouldReduceMotion ? 0 : 0.8,
         ease: [0.16, 1, 0.3, 1],
       }}
       aria-label="Edit entry"
