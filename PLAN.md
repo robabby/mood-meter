@@ -14,6 +14,7 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 | 4 | [SG-181](https://linear.app/sherpagg/issue/SG-181) | API Route: /api/analyze | `sg-181-api-route-apianalyze` | Done |
 | 5 | [SG-179](https://linear.app/sherpagg/issue/SG-179) | EntryComposer Component | `sg-179-entrycomposer-component` | Done |
 | 6 | [SG-190](https://linear.app/sherpagg/issue/SG-190) | Wire up full entry save flow | `sg-190-wire-up-full-entry-save-flow` | Done |
+| 7 | [SG-191](https://linear.app/sherpagg/issue/SG-191) | Auth UI: Login and Signup pages | `sg-191-auth-ui-login-and-signup-pages` | Done |
 
 ## Completed This Sprint
 
@@ -23,6 +24,7 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 - **/api/analyze** Claude API integration for sentiment analysis
 - **EntryComposer** text input → analysis → visualization flow
 - **/api/entries** save entries to database
+- **Auth UI** login/signup pages with email confirmation flow
 
 ## Backlog
 
@@ -32,7 +34,6 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 
 ## Future Work (Not Yet Ticketed)
 
-- Auth UI (login, signup pages)
 - Calendar view components
 - Voice input integration
 - Offline sync implementation

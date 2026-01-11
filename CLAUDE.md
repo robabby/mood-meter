@@ -40,8 +40,9 @@ src/
 │   ├── (app)/             # Today, calendar, entry (authenticated)
 │   └── api/               # analyze, entries, sync
 ├── components/
-│   ├── mood/              # MoodOrb, MoodSpectrum, MoodSuggestion
-│   ├── entry/             # EntryComposer, VoiceInput
+│   ├── auth/              # AuthForm, AuthInput, AuthButton
+│   ├── mood/              # MoodOrb, MoodSpectrum
+│   ├── entry/             # EntryComposer, EntryTextarea, SubmitOrb
 │   ├── calendar/          # CalendarGrid, CalendarDay
 │   └── ui/                # Primitives (Button, Sheet, etc.)
 ├── hooks/                 # useMoodAnalysis, useVoiceInput, etc.
@@ -65,9 +66,11 @@ src/
 ## Key Files
 
 - `src/lib/spectrum.ts` — Energy→color mapping. The algorithm that converts 0-1 energy to HSL.
+- `src/lib/supabase/middleware.ts` — Auth middleware, route protection logic.
 - `src/types/mood.ts` — Core domain types (HSLColor, EnergyLevel, MoodEntry)
 - `src/stores/useJournalStore.ts` — Current entry composition state
-- `src/stores/useOfflineQueue.ts` — Offline-first sync queue
+- `src/components/auth/AuthForm.tsx` — Login/signup form with Supabase auth
+- `src/components/entry/EntryComposer.tsx` — Main journal entry flow
 
 ## Animation Principles
 
@@ -93,6 +96,17 @@ pnpm dev          # Start dev server
 pnpm build        # Production build
 pnpm lint         # ESLint
 ```
+
+### Supabase CLI
+
+```bash
+supabase link --project-ref <ref>   # Link to remote project
+supabase db push                     # Apply local migrations to remote
+supabase db pull                     # Pull remote schema changes
+supabase db diff                     # Show schema differences
+```
+
+Migrations are in `supabase/migrations/`. See `supabase/README.md` for setup details.
 
 ## External Services
 
@@ -159,7 +173,8 @@ SG-177
 
 ## What's Next
 
-See `PLAN.md` for the prioritized backlog. Current focus:
-1. Supabase schema (SG-182)
-2. AI prompt design (SG-180)
-3. MoodOrb component (SG-177)
+See `PLAN.md` for the prioritized backlog. Likely next:
+- Calendar view components
+- Voice input for EntryComposer
+- Client-side entry validation (SG-188)
+- Offline sync implementation
