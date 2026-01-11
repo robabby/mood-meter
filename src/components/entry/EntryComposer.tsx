@@ -19,6 +19,8 @@ interface EntryComposerProps {
     text: string;
     color: HSLColor;
     energy: number;
+    aiGenerated: boolean;
+    reasoning?: string;
   }) => void;
   /** Additional CSS classes */
   className?: string;
@@ -29,8 +31,7 @@ const EASE_SOFT = [0.16, 1, 0.3, 1] as const;
 
 export function EntryComposer({
   initialText = "",
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  onComplete, // TODO: Call when user finalizes entry (save button)
+  onComplete,
   className = "",
 }: EntryComposerProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -43,7 +44,9 @@ export function EntryComposer({
   const reasoning = useJournalStore((s) => s.reasoning);
   const setReasoning = useJournalStore((s) => s.setReasoning);
   const setSuggestedColor = useJournalStore((s) => s.setSuggestedColor);
+  const adjustedColor = useJournalStore((s) => s.adjustedColor);
   const setAlternatives = useJournalStore((s) => s.setAlternatives);
+  const energy = useJournalStore((s) => s.energy);
   const setEnergy = useJournalStore((s) => s.setEnergy);
   const error = useJournalStore((s) => s.error);
   const setError = useJournalStore((s) => s.setError);
@@ -103,6 +106,21 @@ export function EntryComposer({
   const handleEdit = useCallback(() => {
     setAnalysisState("idle");
   }, [setAnalysisState]);
+
+  const handleSave = useCallback(() => {
+    if (!finalColor || energy === null || !onComplete) return;
+
+    // Determine if color is AI-generated (not adjusted by user)
+    const aiGenerated = adjustedColor === null;
+
+    onComplete({
+      text: text.trim(),
+      color: finalColor,
+      energy,
+      aiGenerated,
+      reasoning: reasoning ?? undefined,
+    });
+  }, [finalColor, energy, onComplete, adjustedColor, text, reasoning]);
 
   const handleTextChange = useCallback(
     (newText: string) => {
@@ -231,6 +249,23 @@ export function EntryComposer({
 
             {/* Collapsed entry */}
             <CollapsedEntry text={text} onClick={handleEdit} />
+
+            {/* Save button */}
+            {onComplete && (
+              <motion.button
+                onClick={handleSave}
+                className="mt-2 px-6 py-2 text-sm text-ink-secondary hover:text-ink transition-colors duration-300 rounded-full border border-ink-faint hover:border-ink-secondary"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: shouldReduceMotion ? 0 : 0.4,
+                  delay: shouldReduceMotion ? 0 : 0.8,
+                  ease: EASE_SOFT,
+                }}
+              >
+                Save
+              </motion.button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
