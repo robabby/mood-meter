@@ -8,7 +8,7 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 
 | Order | Issue | Title | Branch | Status |
 |-------|-------|-------|--------|--------|
-| 1 | [SG-182](https://linear.app/sherpagg/issue/SG-182) | Supabase Schema: entries table | `sg-182-supabase-schema-entries-table` | Backlog |
+| 1 | [SG-182](https://linear.app/sherpagg/issue/SG-182) | Supabase Schema: entries table | `sg-182-supabase-schema-entries-table` | Done |
 | 2 | [SG-180](https://linear.app/sherpagg/issue/SG-180) | AI Sentiment Analysis Prompt | `sg-180-ai-sentiment-analysis-prompt-design` | Backlog |
 | 3 | [SG-177](https://linear.app/sherpagg/issue/SG-177) | MoodOrb Component | `sg-177-moodorb-component` | Done |
 | 4 | [SG-178](https://linear.app/sherpagg/issue/SG-178) | MoodSpectrum Component | `sg-178-moodspectrum-component` | Done |
