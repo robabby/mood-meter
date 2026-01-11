@@ -13,6 +13,22 @@ export const moodAnalysisSchema = z.object({
 
 export type MoodAnalysisResponse = z.infer<typeof moodAnalysisSchema>;
 
+/** Schema for validating entry creation request */
+export const createEntrySchema = z.object({
+  text: z.string().min(1).max(500),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be YYYY-MM-DD"),
+  color: z.object({
+    h: z.number().min(0).max(360),
+    s: z.number().min(0).max(100),
+    l: z.number().min(0).max(100),
+  }),
+  energy: z.number().min(0).max(1),
+  aiGenerated: z.boolean(),
+  reasoning: z.string().max(200).optional(),
+});
+
+export type CreateEntryInput = z.infer<typeof createEntrySchema>;
+
 /** Wrapper for API responses */
 export type ApiResult<T> =
   | { success: true; data: T }
