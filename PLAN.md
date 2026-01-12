@@ -15,6 +15,7 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 | 5 | [SG-179](https://linear.app/sherpagg/issue/SG-179) | EntryComposer Component | `sg-179-entrycomposer-component` | Done |
 | 6 | [SG-190](https://linear.app/sherpagg/issue/SG-190) | Wire up full entry save flow | `sg-190-wire-up-full-entry-save-flow` | Done |
 | 7 | [SG-191](https://linear.app/sherpagg/issue/SG-191) | Auth UI: Login and Signup pages | `sg-191-auth-ui-login-and-signup-pages` | Done |
+| 8 | [SG-192](https://linear.app/sherpagg/issue/SG-192) | Calendar view components | `sg-192-calendar-view-components` | Done |
 
 ## Completed This Sprint
 
@@ -25,13 +26,13 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 - **EntryComposer** text input → analysis → visualization flow
 - **/api/entries** save entries to database
 - **Auth UI** login/signup pages with email confirmation flow
+- **Calendar view** monthly grid with mood orbs, day detail sheet
 
 ## Backlog
 
 | Issue | Title | Notes |
 |-------|-------|-------|
 | [SG-188](https://linear.app/sherpagg/issue/SG-188) | Client-side entry validation | 10-280 chars, 2+ words |
-| [SG-192](https://linear.app/sherpagg/issue/SG-192) | Calendar view components | Monthly grid, day cells with mood colors |
 | [SG-193](https://linear.app/sherpagg/issue/SG-193) | Voice input for EntryComposer | Web Speech API, tap to record |
 | [SG-194](https://linear.app/sherpagg/issue/SG-194) | Offline sync implementation | Queue locally, sync when online |
 | [SG-195](https://linear.app/sherpagg/issue/SG-195) | User preferences and settings | Display name, theme, export data |
