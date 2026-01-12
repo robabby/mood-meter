@@ -31,14 +31,11 @@ All tickets live in Linear under the **Mood Meter** project in the Sherpa worksp
 | Issue | Title | Notes |
 |-------|-------|-------|
 | [SG-188](https://linear.app/sherpagg/issue/SG-188) | Client-side entry validation | 10-280 chars, 2+ words |
-
-## Future Work (Not Yet Ticketed)
-
-- Calendar view components
-- Voice input integration
-- Offline sync implementation
-- User preferences/settings
-- Onboarding flow
+| [SG-192](https://linear.app/sherpagg/issue/SG-192) | Calendar view components | Monthly grid, day cells with mood colors |
+| [SG-193](https://linear.app/sherpagg/issue/SG-193) | Voice input for EntryComposer | Web Speech API, tap to record |
+| [SG-194](https://linear.app/sherpagg/issue/SG-194) | Offline sync implementation | Queue locally, sync when online |
+| [SG-195](https://linear.app/sherpagg/issue/SG-195) | User preferences and settings | Display name, theme, export data |
+| [SG-196](https://linear.app/sherpagg/issue/SG-196) | Onboarding flow | Welcome, spectrum explainer, first entry |
 
 ## Definition of Done
 
